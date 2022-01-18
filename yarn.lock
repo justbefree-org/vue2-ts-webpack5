@@ -1865,7 +1865,7 @@
 
 "@vue/cli-plugin-babel@~5.0.0":
   version "5.0.0-rc.2"
-  resolved "https://registry.npmmirror.com/@vue/cli-plugin-babel/download/@vue/cli-plugin-babel-5.0.0-rc.2.tgz#fc6776fe2a7694092fe9f35e431e6c5ae8b3465c"
+  resolved "https://registry.yarnpkg.com/@vue/cli-plugin-babel/-/cli-plugin-babel-5.0.0-rc.2.tgz#fc6776fe2a7694092fe9f35e431e6c5ae8b3465c"
   integrity sha512-r00Oc9qvp1WB0/pvwJ3sIRgMa0Dtha6Z1X1pf7cGCryP9Eh/bAWv4nbOnSwLYSlt8pclNQfoIeYsG9vOjDicvg==
   dependencies:
     "@babel/core" "^7.12.16"
@@ -1877,7 +1877,7 @@
 
 "@vue/cli-plugin-e2e-cypress@~5.0.0":
   version "5.0.0-rc.2"
-  resolved "https://registry.npmmirror.com/@vue/cli-plugin-e2e-cypress/download/@vue/cli-plugin-e2e-cypress-5.0.0-rc.2.tgz#94cd5512cd638677fd00938e927a1dd31443ee81"
+  resolved "https://registry.yarnpkg.com/@vue/cli-plugin-e2e-cypress/-/cli-plugin-e2e-cypress-5.0.0-rc.2.tgz#94cd5512cd638677fd00938e927a1dd31443ee81"
   integrity sha512-pgCKj3m/pCS/I84noRX9uFVJEQSvshI7ONIFUxKiWP8PFMABp8urez66f2Kit+k7QlRhVr3KmFnYZOVnlBp0wA==
   dependencies:
     "@vue/cli-shared-utils" "^5.0.0-rc.2"
@@ -1885,7 +1885,7 @@
 
 "@vue/cli-plugin-eslint@~5.0.0":
   version "5.0.0-rc.2"
-  resolved "https://registry.npmmirror.com/@vue/cli-plugin-eslint/download/@vue/cli-plugin-eslint-5.0.0-rc.2.tgz#22a751276041ce6c3b248d893eb12496ee2e48fa"
+  resolved "https://registry.yarnpkg.com/@vue/cli-plugin-eslint/-/cli-plugin-eslint-5.0.0-rc.2.tgz#22a751276041ce6c3b248d893eb12496ee2e48fa"
   integrity sha512-kRP6/618AkV6Y12ht7YIwvWtW9ygku6s/5uySoBCYEegWce82NPxk2A2TPFmqYRsOG50A3XojK+v0QMdMc+VSQ==
   dependencies:
     "@vue/cli-shared-utils" "^5.0.0-rc.2"
@@ -1896,7 +1896,7 @@
 
 "@vue/cli-plugin-pwa@~5.0.0":
   version "5.0.0-rc.2"
-  resolved "https://registry.npmmirror.com/@vue/cli-plugin-pwa/download/@vue/cli-plugin-pwa-5.0.0-rc.2.tgz#7614847ec9059d0753b95e8a0603d77635ac5bd5"
+  resolved "https://registry.yarnpkg.com/@vue/cli-plugin-pwa/-/cli-plugin-pwa-5.0.0-rc.2.tgz#7614847ec9059d0753b95e8a0603d77635ac5bd5"
   integrity sha512-8Ao0d0JVsIRMsP/txqsJ4ESTMYiPKsqi1IRibR3YI3BIK7bOgqyG6tF4Qeen2T0h4DNwTfiMkqFuUcMkXUXGyg==
   dependencies:
     "@vue/cli-shared-utils" "^5.0.0-rc.2"
@@ -1906,14 +1906,14 @@
 
 "@vue/cli-plugin-router@^5.0.0-rc.2", "@vue/cli-plugin-router@~5.0.0":
   version "5.0.0-rc.2"
-  resolved "https://registry.npmmirror.com/@vue/cli-plugin-router/download/@vue/cli-plugin-router-5.0.0-rc.2.tgz#40c186f88d27fdac6ce8d741cb7f1ec50bccdd5c"
+  resolved "https://registry.yarnpkg.com/@vue/cli-plugin-router/-/cli-plugin-router-5.0.0-rc.2.tgz#40c186f88d27fdac6ce8d741cb7f1ec50bccdd5c"
   integrity sha512-RtbEJD2n6ADbuWB47GU8I6vQfiNZ54ovkWarNkPCcjj+5CC7YQ1tr39pJwAzlwM9eZdxtKHpOS8DkFDB9qJakQ==
   dependencies:
     "@vue/cli-shared-utils" "^5.0.0-rc.2"
 
 "@vue/cli-plugin-typescript@~5.0.0":
   version "5.0.0-rc.2"
-  resolved "https://registry.npmmirror.com/@vue/cli-plugin-typescript/download/@vue/cli-plugin-typescript-5.0.0-rc.2.tgz#8c23a118fd66bc19d8894cb0fd4d5053cdbca18f"
+  resolved "https://registry.yarnpkg.com/@vue/cli-plugin-typescript/-/cli-plugin-typescript-5.0.0-rc.2.tgz#8c23a118fd66bc19d8894cb0fd4d5053cdbca18f"
   integrity sha512-0u16Yt/XanVMMW4bD2Tk5YbYVSetbf4GEqPHVY9FnBtzpu21DXHmilLyq6bXCaKqgnrlCOdrbQZdHl5By+/xyg==
   dependencies:
     "@babel/core" "^7.12.16"
@@ -1930,7 +1930,7 @@
 
 "@vue/cli-plugin-unit-jest@~5.0.0":
   version "5.0.0-rc.2"
-  resolved "https://registry.npmmirror.com/@vue/cli-plugin-unit-jest/download/@vue/cli-plugin-unit-jest-5.0.0-rc.2.tgz#0e915678e962cf3fff30651d7299d16219a51c6b"
+  resolved "https://registry.yarnpkg.com/@vue/cli-plugin-unit-jest/-/cli-plugin-unit-jest-5.0.0-rc.2.tgz#0e915678e962cf3fff30651d7299d16219a51c6b"
   integrity sha512-xXioVWYJaRVVfIWxp6UtYQCoEA9gIG/Q/7xsNka/l0ofteiOhuwqVAEk5lSQcSc9KRaWq3ZhNiGqVCTKApz5xA==
   dependencies:
     "@babel/core" "^7.12.16"
@@ -1946,12 +1946,12 @@
 
 "@vue/cli-plugin-vuex@^5.0.0-rc.2", "@vue/cli-plugin-vuex@~5.0.0":
   version "5.0.0-rc.2"
-  resolved "https://registry.npmmirror.com/@vue/cli-plugin-vuex/download/@vue/cli-plugin-vuex-5.0.0-rc.2.tgz#998939d9edc55149a66adda41e035de985d13ef4"
+  resolved "https://registry.yarnpkg.com/@vue/cli-plugin-vuex/-/cli-plugin-vuex-5.0.0-rc.2.tgz#998939d9edc55149a66adda41e035de985d13ef4"
   integrity sha512-c3cO6+2ojOKUmt7kNGgzA8Ht4FZ+SUnrMc1Vjy8SjdVOrf/SxBcmaQted92H7Y3mx+qkektDstvQ+/nGWIztAw==
 
 "@vue/cli-service@~5.0.0":
   version "5.0.0-rc.2"
-  resolved "https://registry.npmmirror.com/@vue/cli-service/download/@vue/cli-service-5.0.0-rc.2.tgz#74b4855ba0e4feab6f9efa6f1b15f8dc871fbca0"
+  resolved "https://registry.yarnpkg.com/@vue/cli-service/-/cli-service-5.0.0-rc.2.tgz#74b4855ba0e4feab6f9efa6f1b15f8dc871fbca0"
   integrity sha512-bLmBWWx3E8prGr3tmjRZLhr9o/XOBpuXmXpJydFtLlDeh4g/ZVqALJdheVClHwIijxmP7zrHqVeDlF+MY+mSeg==
   dependencies:
     "@babel/helper-compilation-targets" "^7.12.16"
@@ -2497,6 +2497,11 @@ autoprefixer@^10.2.4:
     picocolors "^1.0.0"
     postcss-value-parser "^4.2.0"
 
+awesome-scss-bem@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/awesome-scss-bem/-/awesome-scss-bem-1.0.0.tgz#e0b397dfd78551f9b7403c1ee35f3cd9926c36c9"
+  integrity sha512-/HmIZAmpUZCzRRH4Z25nuiQj4SEixuhN7gbFNOWGeUJYWhF1gLcMZU5JUEkyOEIeyIBfCEqv5btPMVv2iaIMtA==
+
 aws-sign2@~0.7.0:
   version "0.7.0"
   resolved "https://registry.npmmirror.com/aws-sign2/download/aws-sign2-0.7.0.tgz#b46e890934a9591f2d2f6f86d7e6a9f1b3fe76a8"
@@ -2506,6 +2511,13 @@ aws4@^1.8.0:
   version "1.11.0"
   resolved "https://registry.npmmirror.com/aws4/download/aws4-1.11.0.tgz#d61f46d83b2519250e2784daf5b09479a8b41c59"
   integrity sha1-1h9G2DslGSUOJ4Ta9bCUeai0HFk=
+
+axios@^0.24.0:
+  version "0.24.0"
+  resolved "https://registry.yarnpkg.com/axios/-/axios-0.24.0.tgz#804e6fa1e4b9c5288501dd9dff56a7a0940d20d6"
+  integrity sha512-Q6cWsys88HoPgAaFAVUb0WpPk0O8iTeisR9IMqy9G8AbO4NlpVknrnQS03zzF9PGAWgO3cgletO3VjV/P7VztA==
+  dependencies:
+    follow-redirects "^1.14.4"
 
 babel-jest@^27.0.6, babel-jest@^27.1.0, babel-jest@^27.4.6:
   version "27.4.6"
@@ -4426,7 +4438,7 @@ flatted@^3.1.0:
   resolved "https://registry.npmmirror.com/flatted/download/flatted-3.2.4.tgz?cache=0&sync_timestamp=1636473805877&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2Fflatted%2Fdownload%2Fflatted-3.2.4.tgz#28d9969ea90661b5134259f312ab6aa7929ac5e2"
   integrity sha512-8/sOawo8tJ4QOBX8YlQBMxL8+RLZfxMQOif9o0KUKTNTjMYElWPE0r/m5VNFxTRd0NSw8qSy8dajrwX4RYI1Hw==
 
-follow-redirects@^1.0.0:
+follow-redirects@^1.0.0, follow-redirects@^1.14.4:
   version "1.14.7"
   resolved "https://registry.npmmirror.com/follow-redirects/download/follow-redirects-1.14.7.tgz#2004c02eb9436eee9a21446a6477debf17e81685"
   integrity sha512-+hbxoLbFMbRKDwohX8GkTataGqO6Jb7jGwpAlwgy2bIz25XtRm7KEzJM76R1WiNT5SwZkX4Y75SwBolkpmE7iQ==
@@ -5789,6 +5801,11 @@ joi@^17.4.0:
     "@sideway/address" "^4.1.3"
     "@sideway/formula" "^3.0.0"
     "@sideway/pinpoint" "^2.0.0"
+
+js-base64@^3.7.2:
+  version "3.7.2"
+  resolved "https://registry.yarnpkg.com/js-base64/-/js-base64-3.7.2.tgz#816d11d81a8aff241603d19ce5761e13e41d7745"
+  integrity sha512-NnRs6dsyqUXejqk/yv2aiXlAvOs56sLkX6nUdeaNezI5LFFLlsZjOThmwnrcwh5ZZRwZlCMnVAY3CvhIhoVEKQ==
 
 js-beautify@^1.6.12:
   version "1.14.0"
@@ -7216,6 +7233,13 @@ qs@6.9.6:
   version "6.9.6"
   resolved "https://registry.npmmirror.com/qs/download/qs-6.9.6.tgz#26ed3c8243a431b2924aca84cc90471f35d5a0ee"
   integrity sha512-TIRk4aqYLNoJUbd+g2lEdz5kLWIuTMRagAXxl78Q0RiVjAOugHmeKNGdd3cwo/ktpf9aL9epCfFqWDEKysUlLQ==
+
+qs@^6.10.3:
+  version "6.10.3"
+  resolved "https://registry.yarnpkg.com/qs/-/qs-6.10.3.tgz#d6cde1b2ffca87b5aa57889816c5f81535e22e8e"
+  integrity sha512-wr7M2E0OFRfIfJZjKGieI8lBKb7fRCH4Fv5KNPEs7gJ8jadvotdsS08PzOKR7opXhZ/Xkjtt3WF9g38drmyRqQ==
+  dependencies:
+    side-channel "^1.0.4"
 
 qs@~6.5.2:
   version "6.5.3"
@@ -8657,6 +8681,11 @@ vue-hot-reload-api@^2.3.0:
   version "2.3.4"
   resolved "https://registry.npmmirror.com/vue-hot-reload-api/download/vue-hot-reload-api-2.3.4.tgz#532955cc1eb208a3d990b3a9f9a70574657e08f2"
   integrity sha1-UylVzB6yCKPZkLOp+acFdGV+CPI=
+
+vue-i18n@^8.26.8:
+  version "8.26.8"
+  resolved "https://registry.yarnpkg.com/vue-i18n/-/vue-i18n-8.26.8.tgz#afe936adbf96ff0e9808e04845b8f41cc21c666f"
+  integrity sha512-BN2OXolO15AKS95yNF8oOtARibaO6RxyKkAYNV4XpOmL7S4eVZYMIDtyvDv+XGZaiUmBJSH9mdNqzexvGMnK2A==
 
 vue-loader@^17.0.0:
   version "17.0.0"

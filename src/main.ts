@@ -1,13 +1,20 @@
-import Vue from "vue";
+import "./hooks";
+import { logInfo } from "@/config";
+logInfo();
+import { default as Platform } from "@/core/Platform";
 import App from "./App.vue";
 import "./registerServiceWorker";
-import router from "./router";
-import store from "./store";
+import { customApps } from "@/custom";
+import { Route, NavigationGuardNext } from "vue-router/types/router";
 
-Vue.config.productionTip = false;
-
-new Vue({
-  router,
-  store,
-  render: (h) => h(App),
-}).$mount("#app");
+const p = new Platform({ id: "#app", App });
+p.registerRouterHooks(
+  "beforeEach",
+  (from: Route, to: Route, next: NavigationGuardNext) => {
+    console.log(from, to);
+    next();
+  }
+);
+p.install("test");
+p.install(customApps);
+p.startUp();
