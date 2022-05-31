@@ -17,4 +17,6 @@ p.registerRouterHooks(
 );
 p.install("test");
 p.install(customApps);
-p.startUp();
+p.startUp((platform: Platform) => {
+  console.log("app is running", platform);
+});

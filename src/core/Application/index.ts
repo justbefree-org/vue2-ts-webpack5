@@ -2,7 +2,7 @@
  * @Author: Just be free
  * @Date:   2020-07-22 13:36:56
  * @Last Modified by:   Just be free
- * @Last Modified time: 2021-11-12 16:58:57
+ * @Last Modified time: 2022-05-31 10:01:04
  * @E-mail: justbefree@126.com
  */
 declare let require: any;
@@ -26,15 +26,19 @@ class Application {
   private _store: StoreOptions<any>;
   private _applications: Array<ApplicationObject>;
   private _routes: Array<RouteConfig>;
+  private _dynamicRoutes: Array<RouteConfig>;
   private _messages: AnyObject;
+  private vueRouter: VueRouter | null;
   constructor() {
     this._applications = [];
     this._store = {};
     this._routes = [];
+    this._dynamicRoutes = [];
     this._messages = {};
     this.installVueRouter();
     this.installVuex();
     this.installI18n();
+    this.vueRouter = null;
   }
 
   private processingModule(name: string, StoreArr: StoreManager[] = []): void {
@@ -86,11 +90,19 @@ class Application {
     this._applications.push(application);
   }
 
-  private setRoutes(routes: Array<RouteConfig>): void {
-    this._routes = routes;
+  private setRoutes(routes: Array<RouteConfig>, isDynamic: boolean): void {
+    if (isDynamic) {
+      this._dynamicRoutes = routes;
+    } else {
+      this._routes = routes;
+    }
   }
   private getRoutes(): Array<RouteConfig> {
     return this._routes;
+  }
+
+  public getDynamicRoutes(): Array<RouteConfig> {
+    return this._dynamicRoutes;
   }
 
   private processingMessages(appName: string, i18n: AnyObject): void {
@@ -125,10 +137,13 @@ class Application {
           const childApplication = module[1].default;
           const p = new I18n(parentApplication.i18n);
           const c = new I18n(childApplication.i18n);
+          console.log(parentApplication.router.getConstRoutes());
           application = {
             i18n: p.merge(c),
             name: parentApplication.name,
-            routes: [...parentApplication.routes, ...childApplication.routes],
+            // router: [...parentApplication.router.getConstRoutes(), ...childApplication.router.getConstRoutes()],
+            // router: parentApplication.router.addRoutes(childApplication.router.getRoutes())
+            router: parentApplication.router.merge(childApplication.router),
           };
         } else {
           application = module.default;
@@ -136,8 +151,16 @@ class Application {
         this.registerStore(application.name);
         this.addApplication(application);
         this.processingMessages(application.name, application.i18n);
-        const routes = [...this.getRoutes(), ...application.routes];
-        this.setRoutes(routes);
+        const routes = [
+          ...this.getRoutes(),
+          ...application.router.getConstRoutes(),
+        ];
+        this.setRoutes(routes, false);
+        const dynamicRoutes = [
+          ...this._dynamicRoutes,
+          ...application.router.getDynamicRoutes(),
+        ];
+        this.setRoutes(dynamicRoutes, true);
         return Promise.resolve(application);
       })
       .catch((err) => {
@@ -180,7 +203,24 @@ class Application {
 
   public getRouter() {
     const routes = this.getRoutes();
-    return new VueRouter({ mode: "hash", routes });
+    const vueRouter = new VueRouter({ mode: "hash", routes });
+    this.vueRouter = vueRouter;
+    return vueRouter;
+  }
+
+  public addRoute(routes: Array<RouteConfig> | RouteConfig) {
+    if (Array.isArray(routes)) {
+      routes.forEach((route: RouteConfig) => {
+        (this.vueRouter as VueRouter).addRoute(route);
+      });
+    } else {
+      (this.vueRouter as VueRouter).addRoute(routes);
+    }
+  }
+
+  public registerDynamicRoutes(): void {
+    const dynamicRoutes = this.getDynamicRoutes();
+    this.addRoute(dynamicRoutes);
   }
 
   public getI18n() {

@@ -2,7 +2,7 @@
  * @Author: Just be free
  * @Date:   2020-07-22 15:37:07
  * @Last Modified by:   Just be free
- * @Last Modified time: 2021-10-22 15:16:51
+ * @Last Modified time: 2022-05-30 19:12:39
  * @E-mail: justbefree@126.com
  */
 
@@ -13,16 +13,21 @@ router.register([
     pathName: "about",
     path: "/about",
     name: "about",
+    dynamic: true,
   },
   {
     pathName: "home",
     path: "/home",
     name: "home",
+    dynamic: false,
   },
   {
     pathName: "extend",
     path: "/extend",
     name: "extend",
+    dynamic: true,
   },
 ]);
-export default router.getRoutes();
+// export default router.getRoutes();
+// export default router.getConstRoutes();
+export default router;

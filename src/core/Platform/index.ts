@@ -2,12 +2,12 @@
  * @Author: Just be free
  * @Date:   2020-07-22 10:02:44
  * @Last Modified by:   Just be free
- * @Last Modified time: 2021-11-12 17:05:59
+ * @Last Modified time: 2022-05-31 10:02:46
  * @E-mail: justbefree@126.com
  */
 import Vue, { VueConstructor } from "vue";
 import { Component } from "../types";
-import { PlatformConstructorParams } from "./types";
+import { PlatformConstructorParams, StrtUpCallback } from "./types";
 import { default as Application } from "../Application";
 import { RouterHooksName } from "../RouterManager/types";
 // import { NavigationGuard } from "vue-router/types/router";
@@ -29,6 +29,9 @@ class Platform {
     this._appStack.push(app);
     return this;
   }
+  public getApplication(): Application {
+    return app;
+  }
   public registerRouterHooks(hookName: RouterHooksName, event: any): void {
     this._routerHooks.push({ hookName, event });
   }
@@ -44,7 +47,7 @@ class Platform {
       this.registerApplication(app.register(appName));
     }
   }
-  public startUp(): void {
+  public startUp(callback?: StrtUpCallback): void {
     const apps = this.getAppStack();
     Promise.all(apps).then((res) => {
       console.log(`Platform has started`, res);
@@ -61,6 +64,10 @@ class Platform {
         store,
         router,
         i18n,
+        created: () => {
+          typeof callback === "function" && callback(this);
+          app.registerDynamicRoutes();
+        },
         render: (h) => h(this._App),
       }).$mount(this._id);
     });

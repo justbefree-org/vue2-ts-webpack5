@@ -2,7 +2,7 @@
  * @Author: Just be free
  * @Date:   2021-03-04 11:17:13
  * @Last Modified by:   Just be free
- * @Last Modified time: 2021-03-04 11:22:47
+ * @Last Modified time: 2022-05-30 19:13:01
  * @E-mail: justbefree@126.com
  */
 
@@ -15,4 +15,5 @@ router.register([
     name: "child",
   },
 ]);
-export default router.getRoutes();
+// export default router.getRoutes();
+export default router;
