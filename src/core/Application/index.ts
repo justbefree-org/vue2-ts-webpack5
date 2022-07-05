@@ -2,7 +2,7 @@
  * @Author: Just be free
  * @Date:   2020-07-22 13:36:56
  * @Last Modified by:   Just be free
- * @Last Modified time: 2022-05-31 10:01:04
+ * @Last Modified time: 2022-07-04 12:09:08
  * @E-mail: justbefree@126.com
  */
 declare let require: any;
@@ -125,6 +125,28 @@ class Application {
     return this._messages;
   }
 
+  public registerApp(application: ApplicationObject): Promise<any> {
+    this.processingModule(application.name.toLowerCase(), application.store);
+    this.addApplication(application);
+    this.processingMessages(application.name, application.i18n);
+    // handle static routes -- start
+    const routes = [
+      ...this.getRoutes(),
+      ...application.router.getConstRoutes(),
+    ];
+    this.setRoutes(routes, false);
+    // handle static routes -- end
+
+    // handle dynamic routes --start
+    const dynamicRoutes = [
+      ...this._dynamicRoutes,
+      ...application.router.getDynamicRoutes(),
+    ];
+    this.setRoutes(dynamicRoutes, true);
+    // handle dynamic routes -- end
+    return Promise.resolve(application);
+  }
+
   public register(applicationName: string): Promise<any> {
     if (!applicationName) {
       return Promise.reject("Application name is required!");
@@ -137,12 +159,9 @@ class Application {
           const childApplication = module[1].default;
           const p = new I18n(parentApplication.i18n);
           const c = new I18n(childApplication.i18n);
-          console.log(parentApplication.router.getConstRoutes());
           application = {
             i18n: p.merge(c),
             name: parentApplication.name,
-            // router: [...parentApplication.router.getConstRoutes(), ...childApplication.router.getConstRoutes()],
-            // router: parentApplication.router.addRoutes(childApplication.router.getRoutes())
             router: parentApplication.router.merge(childApplication.router),
           };
         } else {

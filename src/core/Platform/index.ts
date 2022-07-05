@@ -2,15 +2,15 @@
  * @Author: Just be free
  * @Date:   2020-07-22 10:02:44
  * @Last Modified by:   Just be free
- * @Last Modified time: 2022-05-31 10:02:46
+ * @Last Modified time: 2022-07-04 18:31:18
  * @E-mail: justbefree@126.com
  */
 import Vue, { VueConstructor } from "vue";
 import { Component } from "../types";
+import { ApplicationObject } from "../Application/types";
 import { PlatformConstructorParams, StrtUpCallback } from "./types";
 import { default as Application } from "../Application";
 import { RouterHooksName } from "../RouterManager/types";
-// import { NavigationGuard } from "vue-router/types/router";
 const app = new Application();
 class Platform {
   private _appStack: Array<Promise<any>>;
@@ -38,15 +38,20 @@ class Platform {
   public getVue(): VueConstructor {
     return Vue;
   }
-  public install(appName: string | Array<string>): void {
+  public install(appName: string | Array<string> | ApplicationObject): void {
     if (appName && Array.isArray(appName)) {
       (appName as Array<string>).forEach((name: string) => {
         this.registerApplication(app.register(name));
       });
     } else {
-      this.registerApplication(app.register(appName));
+      if (typeof appName === "string") {
+        this.registerApplication(app.register(appName));
+      } else {
+        this.registerApplication(app.registerApp(appName as ApplicationObject));
+      }
     }
   }
+
   public startUp(callback?: StrtUpCallback): void {
     const apps = this.getAppStack();
     Promise.all(apps).then((res) => {
