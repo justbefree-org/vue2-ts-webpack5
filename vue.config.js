@@ -4,7 +4,8 @@ const ModuleFederationPlugin =
 // MaxListenersExceededWarning:Possible EventEmitter memory leak detected.
 require("events").EventEmitter.defaultMaxListeners = 0;
 // const publicPath = process.env.NODE_ENV === "production" ? "/" : "/";
-const publicPath = "http://localhost:8080/";
+// const publicPath = "http://localhost:8080/";
+const publicPath = "/";
 module.exports = defineConfig({
   transpileDependencies: true,
   publicPath,
