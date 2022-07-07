@@ -2,7 +2,7 @@
  * @Author: Just be free
  * @Date:   2020-07-22 15:40:12
  * @Last Modified by:   Just be free
- * @Last Modified time: 2022-05-30 19:41:54
+ * @Last Modified time: 2022-07-07 17:34:32
  * @E-mail: justbefree@126.com
  */
 import { loadComponent } from "../utils/load";
@@ -23,7 +23,7 @@ class RouterManager {
   private getBaseDir(): string {
     return this.baseDir;
   }
-  private pushRoutes(route: RouteConfig, isDynamic: false) {
+  private pushRoutes(route: RouteConfig, isDynamic: boolean) {
     if (isDynamic) {
       this.dynamicRoutes.push(route);
     } else {
