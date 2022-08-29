@@ -35,7 +35,7 @@ export const loadApplication = (path: string) => {
 
 export const loadComponent = (path: string) => {
   const routerTypeComponent = path.indexOf("layout") > -1;
-  // const com = () => import( webpackChunkName: "index" `@/applications/common/${path}/index.js`)
+  // const com = () => import( webpackChunkName: "index" `@/applications/bridge/${path}/index.js`)
   // 使用[request]来告诉webpack，这里的值是根据后面传入的字符串来决定，本例中就是变量path的值
   let hascustom = false;
   try {

@@ -2,7 +2,7 @@
  * @Author: Just be free
  * @Date:   2020-07-30 13:43:52
  * @Last Modified by:   Just be free
- * @Last Modified time: 2022-08-10 15:58:08
+ * @Last Modified time: 2022-08-29 15:26:14
  * @E-mail: justbefree@126.com
  */
 
@@ -32,14 +32,14 @@ export default class Super extends Vue {
     }
     return this.$t(keyPath, inject) as any;
   }
-  $lang(key: string | GetProperLanguageFirstArg, inject: AnyObject = {}) {
-    return this.getProperLanguage(key, inject);
-  }
   changeLanguage(lang: string): void {
     this.$i18n.locale = lang;
   }
   getCurrentLanguage(): string {
     return this.$i18n.locale || "zh-CN";
+  }
+  $lang(key: string | GetProperLanguageFirstArg, inject: AnyObject = {}) {
+    return this.getProperLanguage(key, inject);
   }
   // bem(b: BemConstructorContext, e?: BemConstructorContext): string {
   //   return createBem(b, e);
