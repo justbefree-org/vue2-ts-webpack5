@@ -2,24 +2,20 @@
  * @Author: Just be free
  * @Date:   2020-07-28 15:22:10
  * @Last Modified by:   Just be free
- * @Last Modified time: 2022-08-30 11:00:39
+ * @Last Modified time: 2022-08-30 17:05:11
  * @E-mail: justbefree@126.com
  */
 import axios from "axios";
 import { AnyObject, Anything } from "../types";
 import * as qs from "qs";
-const formData = (config: AnyObject, type?: string) => {
-  const { headers, interceptor } = config;
-  delete config.headers;
+const formData = (config: AnyObject) => {
+  const { interceptor } = config;
   delete config.interceptor;
-  const contentType = type || "application/x-www-form-urlencoded;charset=utf-8";
-  const instance = axios.create({
-    headers: {
-      "Content-Type": contentType,
-      ...headers,
-    },
-    ...config,
-  });
+  config["headers"] = {
+    ...config["headers"],
+    "Content-Type": "application/x-www-form-urlencoded;charset=utf-8",
+  };
+  const instance = axios.create(config);
   if (interceptor && typeof interceptor === "function") {
     return interceptor(instance);
   }
@@ -27,16 +23,13 @@ const formData = (config: AnyObject, type?: string) => {
 };
 
 const json = (config: AnyObject) => {
-  const { headers, interceptor } = config;
-  delete config.headers;
+  const { interceptor } = config;
   delete config.interceptor;
-  const instance = axios.create({
-    headers: {
-      "Content-Type": "application/json;charset=utf-8",
-      ...headers,
-    },
-    ...config,
-  });
+  config["headers"] = {
+    ...config["headers"],
+    "Content-Type": "application/json;charset=utf-8",
+  };
+  const instance = axios.create(config);
   if (interceptor && typeof interceptor === "function") {
     return interceptor(instance);
   }
@@ -55,8 +48,15 @@ const post = (url: string, params: AnyObject, config = {}): Promise<any> => {
       console.log(e);
     });
 };
-const upload = (url: string, params: AnyObject, config = {}): Promise<any> => {
-  return formData(config, "multipart/form-data;charset=utf-8")
+const upload = (
+  url: string,
+  params: AnyObject,
+  config: AnyObject = {}
+): Promise<any> => {
+  config["headers"] = {
+    "Content-Type": "multipart/form-data;charset=utf-8",
+  };
+  return formData(config)
     .post(url, params)
     .then((res: Anything) => {
       if (res.status === 200) {
