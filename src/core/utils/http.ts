@@ -2,7 +2,7 @@
  * @Author: Just be free
  * @Date:   2020-07-28 15:22:10
  * @Last Modified by:   Just be free
- * @Last Modified time: 2022-08-30 10:26:16
+ * @Last Modified time: 2022-08-30 11:00:39
  * @E-mail: justbefree@126.com
  */
 import axios from "axios";
@@ -20,7 +20,10 @@ const formData = (config: AnyObject, type?: string) => {
     },
     ...config,
   });
-  return interceptor(instance);
+  if (interceptor && typeof interceptor === "function") {
+    return interceptor(instance);
+  }
+  return instance;
 };
 
 const json = (config: AnyObject) => {
@@ -34,7 +37,10 @@ const json = (config: AnyObject) => {
     },
     ...config,
   });
-  return interceptor(instance);
+  if (interceptor && typeof interceptor === "function") {
+    return interceptor(instance);
+  }
+  return instance;
 };
 
 const post = (url: string, params: AnyObject, config = {}): Promise<any> => {
