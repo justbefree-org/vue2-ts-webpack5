@@ -2,11 +2,11 @@
  * @Author: Just be free
  * @Date:   2020-07-27 16:02:38
  * @Last Modified by:   Just be free
- * @Last Modified time: 2022-08-29 14:35:55
+ * @Last Modified time: 2022-08-29 15:40:29
  * @E-mail: justbefree@126.com
  */
 import { APIobject, State } from "./types";
-import { AnyObject, Callback } from "../types";
+import { AnyObject, Callback, Anything } from "../types";
 import { getType } from "../utils/mutationTypes";
 import Http, { HttpMethodTypes } from "../utils/http";
 import { hasProperty } from "../utils";
@@ -47,7 +47,7 @@ class StoreManager {
       try {
         this._API = require(`@/applications/${this._moduleName}/store`)["API"];
       } catch (err) {
-        this._API = require(`@/custom/${this._moduleName}/store`)["API"];
+        this._API = {};
       }
     }
   }
@@ -66,7 +66,7 @@ class StoreManager {
   protected httpSuccessCallback(args: AnyObject | string): void {
     console.log("http success callback", args);
   }
-  protected httpFailCallback(args: any): void {
+  protected httpFailCallback(args: Anything): void {
     console.log("http fail callback", args);
   }
   protected httpParamsModifier(args: AnyObject): AnyObject {
@@ -90,7 +90,7 @@ class StoreManager {
       const type = actionObject[actionName].type;
       const url = actionObject[actionName].url;
       this._action[actionName] = (
-        context: ActionContext<State, any>,
+        context: ActionContext<State, Anything>,
         args: AnyObject
       ) => {
         this.ajax(url, type, args, actionName, context);
@@ -127,7 +127,7 @@ class StoreManager {
     method: HttpMethodTypes,
     args: AnyObject,
     actionName: string,
-    context: ActionContext<State, any>
+    context: ActionContext<State, Anything>
   ) {
     const { params } = args;
     return Http(method)(
@@ -162,7 +162,7 @@ class StoreManager {
   ): StoreManager {
     this._actionName = actionName;
     this._action[actionName] = (
-      context: ActionContext<State, any>,
+      context: ActionContext<State, Anything>,
       args: AnyObject
     ) => {
       if (async) {
@@ -195,9 +195,9 @@ class StoreManager {
   public getters(name: string, callback: Callback): StoreManager {
     this._getters[name] = (
       state: State,
-      getters: any,
+      getters: Anything,
       rootState: State,
-      rootGetters: any
+      rootGetters: Anything
     ) => {
       return callback({ state, getters, rootState, rootGetters });
     };
