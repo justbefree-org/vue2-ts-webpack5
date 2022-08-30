@@ -2,15 +2,16 @@
  * @Author: Just be free
  * @Date:   2020-07-27 16:02:38
  * @Last Modified by:   Just be free
- * @Last Modified time: 2022-08-29 15:40:29
+ * @Last Modified time: 2022-08-30 10:24:28
  * @E-mail: justbefree@126.com
  */
 import { APIobject, State } from "./types";
-import { AnyObject, Callback, Anything } from "../types";
+import { AnyObject, Callback } from "../types";
 import { getType } from "../utils/mutationTypes";
 import Http, { HttpMethodTypes } from "../utils/http";
 import { hasProperty } from "../utils";
 import { ActionContext } from "vuex/types";
+import { AxiosInstance } from "axios";
 class StoreManager {
   private _moduleName: string;
   private _actionName: string;
@@ -47,7 +48,7 @@ class StoreManager {
       try {
         this._API = require(`@/applications/${this._moduleName}/store`)["API"];
       } catch (err) {
-        this._API = {};
+        this._API = require(`@/custom/${this._moduleName}/store`)["API"];
       }
     }
   }
@@ -66,7 +67,7 @@ class StoreManager {
   protected httpSuccessCallback(args: AnyObject | string): void {
     console.log("http success callback", args);
   }
-  protected httpFailCallback(args: Anything): void {
+  protected httpFailCallback(args: any): void {
     console.log("http fail callback", args);
   }
   protected httpParamsModifier(args: AnyObject): AnyObject {
@@ -78,9 +79,12 @@ class StoreManager {
     console.log("set http request headers");
     return {};
   }
+  protected interceptor(axios: AxiosInstance): AxiosInstance {
+    return axios;
+  }
   protected mergeConfig(uri: string, params: AnyObject): AnyObject {
     const config = this.setRequestHeaders(uri, params);
-    return { ...this._axiosConfig, ...config };
+    return { ...this._axiosConfig, ...config, interceptor: this.interceptor };
   }
 
   public actions(actionObject: AnyObject): StoreManager {
@@ -90,7 +94,7 @@ class StoreManager {
       const type = actionObject[actionName].type;
       const url = actionObject[actionName].url;
       this._action[actionName] = (
-        context: ActionContext<State, Anything>,
+        context: ActionContext<State, any>,
         args: AnyObject
       ) => {
         this.ajax(url, type, args, actionName, context);
@@ -127,7 +131,7 @@ class StoreManager {
     method: HttpMethodTypes,
     args: AnyObject,
     actionName: string,
-    context: ActionContext<State, Anything>
+    context: ActionContext<State, any>
   ) {
     const { params } = args;
     return Http(method)(
@@ -162,7 +166,7 @@ class StoreManager {
   ): StoreManager {
     this._actionName = actionName;
     this._action[actionName] = (
-      context: ActionContext<State, Anything>,
+      context: ActionContext<State, any>,
       args: AnyObject
     ) => {
       if (async) {
@@ -195,9 +199,9 @@ class StoreManager {
   public getters(name: string, callback: Callback): StoreManager {
     this._getters[name] = (
       state: State,
-      getters: Anything,
+      getters: any,
       rootState: State,
-      rootGetters: Anything
+      rootGetters: any
     ) => {
       return callback({ state, getters, rootState, rootGetters });
     };

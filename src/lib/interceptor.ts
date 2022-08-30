@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { AxiosInstance } from "axios";
 import { getConfig } from "@/config";
 import { AnyObject } from "../types";
 class CancelApi {
@@ -16,7 +16,7 @@ class CancelApi {
   }
 }
 export const cancelApi = new CancelApi();
-export const interceptor = (instance: any) => {
+export const interceptor = (instance: AxiosInstance): AxiosInstance => {
   instance.interceptors.request.use(
     (config: any) => {
       const { url } = config;
@@ -37,4 +37,5 @@ export const interceptor = (instance: any) => {
       return Promise.reject(error);
     }
   );
+  return instance;
 };

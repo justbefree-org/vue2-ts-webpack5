@@ -2,11 +2,13 @@
  * @Author: Just be free
  * @Date:   2020-08-20 17:04:29
  * @Last Modified by:   Just be free
- * @Last Modified time: 2021-10-14 12:24:02
+ * @Last Modified time: 2022-08-30 10:25:39
  * @E-mail: justbefree@126.com
  */
 import { AnyObject } from "./core/types";
+import { interceptor } from "@/lib/interceptor";
 import StoreManager from "@/core/StoreManager";
+import { AxiosInstance } from "axios";
 class Store extends StoreManager {
   constructor(moduleName: string, axiosConfig?: AnyObject) {
     super(moduleName, axiosConfig);
@@ -19,6 +21,9 @@ class Store extends StoreManager {
   }
   protected httpParamsModifier(args: AnyObject): AnyObject {
     return args;
+  }
+  protected interceptor(axios: AxiosInstance): AxiosInstance {
+    return interceptor(axios);
   }
   protected setRequestHeaders(uri: string, params: AnyObject): AnyObject {
     console.log("地址是", uri, "参数是", params);
