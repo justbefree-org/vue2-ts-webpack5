@@ -2,7 +2,7 @@
  * @Author: Just be free
  * @Date:   2020-07-22 10:02:44
  * @Last Modified by:   Just be free
- * @Last Modified time: 2022-07-04 18:31:18
+ * @Last Modified time: 2022-09-19 11:37:26
  * @E-mail: justbefree@126.com
  */
 import Vue, { VueConstructor } from "vue";
@@ -57,6 +57,8 @@ class Platform {
     Promise.all(apps).then((res) => {
       console.log(`Platform has started`, res);
       const router = app.getRouter();
+      app.registerDynamicRoutes();
+      typeof callback === "function" && callback({ app });
       this._routerHooks.forEach((hook: any) => {
         const { hookName, event } = hook;
         router[hookName as RouterHooksName](event);
@@ -69,10 +71,6 @@ class Platform {
         store,
         router,
         i18n,
-        created: () => {
-          typeof callback === "function" && callback(this);
-          app.registerDynamicRoutes();
-        },
         render: (h) => h(this._App),
       }).$mount(this._id);
     });
