@@ -13,6 +13,7 @@
 <script>
 // @ is an alias to /src
 import HelloWorld from "@/applications/test/hello-world";
+console.log("hello-world", HelloWorld);
 import { default as TestStorage } from "@/applications/test/lib/LocalStore";
 const store = new TestStorage("session", "20200821");
 console.log(store);
